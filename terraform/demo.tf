@@ -10,7 +10,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "My_bucket"
+    bucket = "terraform-bucket-state"
     key = "terraform.tfstate"
     region = "us-east-1"
     encrypt = true
@@ -24,13 +24,12 @@ provider "aws" {
 }
 
 # Define a bucket to store our infrastructure state
-# resource "aws_s3_bucket" "my_first_bucket" {
-#     bucket = "My_bucket"
-#     acl = "private"
-#     tags = {
-#         Name = aws_s3_bucket.my_first_bucket.bucket
-#     }
-# }
+resource "aws_s3_bucket" "my_first_bucket" {
+    bucket = "terraform-bucket-bolan"
+    tags = {
+        Name = "bucket"
+    }
+}
 
 # Display bucket info in the console
 output "bucket_info" {
