@@ -71,11 +71,11 @@ resource "aws_instance" "my_web_server" {
     # Set the AMI (Amazon Machine Name)
     ami = "ami linux 2023"
     instance_type = "t2.micro"
-}
 
-# Configure tag for the instance
-tags = {
-    Name = "My Web Server"
+    # Configure tag for the instance
+    tags = {
+        Name = "My Web Server"
+    }
 }
 ```
 
