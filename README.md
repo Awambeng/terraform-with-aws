@@ -100,4 +100,26 @@ tags = {
 
 NB: Traditional automation involve writing script to automate manual stuff.
 
+## Installation of Terraform.
+To install Terraform you can use the following steps.
+
+1. Download Terraform zip file using the command below:
+```bash
+curl https://releases.hashicorp.com/terraform/1.8.4/terraform_1.8.4_linux_amd64.zip -o terraform.zip
+```
+
+2. Extract the zip file using:
+```bash
+unzip -u terraform.zip
+```
+
+3. Move the extracted file to the location /usr/local/bin directory using:
+```bash
+sudo mv terraform /usr/local/bin
+```
+
+4. Check if the installation was successfull.
+```bash
+terraform --version
+```
 
