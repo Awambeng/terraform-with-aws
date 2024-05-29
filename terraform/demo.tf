@@ -1,23 +1,5 @@
 # My first Terraform Configuration.
 
-# Declaring variables for access and secret key.
-# variable "access_key" {
-#   type = string
-#   description = "Access key for your resources"
-#   sensitive = true  # Mark this sensitive to avoid printing in logs
-# }
-
-# variable "secret_key" {
-#   type = string
-#   description = "Secret key for your resources"
-#   sensitive = true  # Mark this sensitive to avoid printing in logs
-# }
-
-# variable "region" {
-#     type = string
-#     description = "Region of the resources"
-# }
-
 # Cofigure aws provider
 terraform {
   required_providers {
@@ -29,9 +11,9 @@ terraform {
 }
 
 provider "aws" {
-    # access_key = "access_key"
-    # secret_key = "secret_key"
-    region = "us-east-1"
+    access_key = var.access_key
+    secret_key = var.secret_key
+    region = var.region
 }
 
 # Define an EC2 instance resource
@@ -41,7 +23,7 @@ resource "aws_instance" "my_first_web_server" {
     instance_type = "t2.micro"
     key_name = "my-aws-key-pair"
     tags = {
-        Name = "Demo"
+        Name = var.instance_name
     }
 }
 
