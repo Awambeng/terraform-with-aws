@@ -8,12 +8,33 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  backend "s3" {
+    bucket = "My_bucket"
+    key = "terraform.tfstate"
+    region = "us-east-1"
+    encrypt = true
+  }
 }
 
 provider "aws" {
     access_key = var.access_key
     secret_key = var.secret_key
     region = var.region
+}
+
+# Define a bucket to store our infrastructure state
+# resource "aws_s3_bucket" "my_first_bucket" {
+#     bucket = "My_bucket"
+#     acl = "private"
+#     tags = {
+#         Name = aws_s3_bucket.my_first_bucket.bucket
+#     }
+# }
+
+# Display bucket info in the console
+output "bucket_info" {
+    value = aws_s3_bucket.my_first_bucket.id
 }
 
 # Define an EC2 instance resource
